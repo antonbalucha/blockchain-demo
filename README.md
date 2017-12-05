@@ -1,2 +1,2 @@
 # blockchain-demo
-Simple example of blockchain
+Simple example of blockchain. Project demonstrates principles how blockchain works. 
