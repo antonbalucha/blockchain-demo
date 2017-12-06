@@ -1,4 +1,4 @@
-package technology.tonyb.blockchain;
+package technology.tonyb.blockchain.level2.proofofwork;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ public class Blockchain {
 
 	public static void main(String[] args) {
 
-		Transaction genesisTransaction = new Transaction("A", "B", 0.0);
+		Transaction genesisTransaction = new Transaction("A", "B", 1.0);
 		System.out.println("Hash of genesis transaction: " + genesisTransaction.getTransactionHash());
 		
 		List<Transaction> genesisTransactions1 = new ArrayList<Transaction>();
@@ -15,7 +15,7 @@ public class Blockchain {
 		
 		Block genesisBlock = new Block(0, genesisTransactions1);
 		System.out.println("Hash of genesis block: " + genesisBlock.getCurrentBlockHash());
-		
+
 		
 		
 		Transaction transaction1 = new Transaction("B", "C", 1.0);

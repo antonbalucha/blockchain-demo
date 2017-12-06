@@ -1,0 +1,31 @@
+Ideas for extended example of simple blockchain app:
+
+transaction:
+- add timestamp
+
+block:
+- add timestamp
+- add number of block
+
+hash:
+- use sha512
+
+address:
+- create object address and generate original btc address
+
+blockchain:
+
+private List<Block> blocks = new ArrayList<Block>();
+	
+	public List<Block> getBlocks() {
+		return this.blocks;
+	}
+
+	public void setBlocks(List<Block> blocks) {
+		this.blocks = blocks;
+	}
+
+	public Blockchain addBlock(Block block) {
+		this.blocks.add(block);
+		return this;
+	}
