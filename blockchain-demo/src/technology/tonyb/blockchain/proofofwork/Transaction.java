@@ -1,10 +1,10 @@
-package technology.tonyb.blockchain.level2.proofofwork;
+package technology.tonyb.blockchain.proofofwork;
 
 
 /**
- * Object {@link technology.tonyb.blockchain.level1.principles.Transaction Transaction} contains only information about transaction.
+ * Object {@link technology.tonyb.blockchain.principles.Transaction Transaction} contains only information about transaction.
  * Transaction contains one <b>source address</b> from which is send some <b>amount</b> of money to <b>target address</b>. 
- * Transaction is used by {@link technology.tonyb.blockchain.level1.principles.Block Block} object.
+ * Transaction is used by {@link technology.tonyb.blockchain.principles.Block Block} object.
  * 
  * @author Anton Balucha
  */

@@ -1,4 +1,4 @@
-package technology.tonyb.blockchain.level1.principles;
+package technology.tonyb.blockchain.principles;
 
 import java.util.ArrayList;
 import java.util.List;

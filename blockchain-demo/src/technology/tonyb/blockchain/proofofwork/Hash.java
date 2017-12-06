@@ -1,4 +1,4 @@
-package technology.tonyb.blockchain.level2.proofofwork;
+package technology.tonyb.blockchain.proofofwork;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
