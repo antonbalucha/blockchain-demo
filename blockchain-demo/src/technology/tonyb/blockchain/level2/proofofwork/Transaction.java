@@ -1,5 +1,6 @@
 package technology.tonyb.blockchain.level2.proofofwork;
 
+
 /**
  * Object {@link technology.tonyb.blockchain.level1.principles.Transaction Transaction} contains only information about transaction.
  * Transaction contains one <b>source address</b> from which is send some <b>amount</b> of money to <b>target address</b>. 

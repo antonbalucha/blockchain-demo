@@ -11,14 +11,32 @@ import java.util.List;
  */
 public class Block {
 
-	/** Number of zeros at the beginning of the hash. */
-	public static final int DIFFICULTY = 3;
+	/** Difficulty represents number of generated zeros at the beginning of the hash. */
+	public static final int DIFFICULTY = 4;
+
+	public static final String zeroes;
+	
+	static {
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < DIFFICULTY; i++) {
+			sb.append("0");
+		}
+		
+		zeroes = sb.toString();
+	}
 	
 	/** Hash of previous block. */
 	private String previousBlockHash = "0";
 	
 	/** List of transactions listed in current block. */
 	private List<Transaction> transactions = new ArrayList<Transaction>();
+	
+	/** 
+	 * Number which will be incremented in order to change hash of the block. It can be of course used another way of updating block,
+	 * e.g. generate random string, GUID... <br> 
+	 */ 
+	private long nonce = 0;
 	
 	/** Hash of current block calculated when information about transactions and hash of previous block are provided. */
 	private String currentBlockHash;
@@ -29,6 +47,7 @@ public class Block {
 		this.transactions = transactions;
 		
 		this.countCurrentBlockHash();
+		this.mineBlock();
 	}
 	
 	/** Method returns hash of previous block. */
@@ -52,20 +71,24 @@ public class Block {
 	
 	/** Method counts hash of current block. */
 	private void countCurrentBlockHash() {
-		String[] materialForBlockHash = new String[this.transactions.size() + 1];
+		String[] materialForBlockHash = new String[this.transactions.size() + 2];
 		
 		materialForBlockHash[0] = this.previousBlockHash;
+		
+		materialForBlockHash[1] = this.nonce + "";
 
-		for (int i = 1; i <= this.transactions.size(); i++) {
-			materialForBlockHash[i] = this.transactions.get(i - 1).getTransactionHash();
+		for (int i = 2; i <= this.transactions.size(); i++) {
+			materialForBlockHash[i] = this.transactions.get(i - 2).getTransactionHash();
 		}
 		
 		this.currentBlockHash = Hash.getHash(materialForBlockHash);
 	}
 	
-	private void mineBlock(int difficulty) {
-		
-		
-		
+	/** Method, which provides mining of block - finding hash, which fits to defined rules. */
+	private void mineBlock() {
+		while (!currentBlockHash.startsWith(zeroes)) {
+			countCurrentBlockHash();
+			nonce++;
+		}
 	}
 }
