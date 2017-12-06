@@ -27,5 +27,13 @@ private List<Block> blocks = new ArrayList<Block>();
 
 	public Blockchain addBlock(Block block) {
 		this.blocks.add(block);
+		update hashes
 		return this;
 	}
+	
+	getLatestBlock()
+	
+	createGenesisBlock()
+	
+	isChainValid()
+	- iterate over all blocks - hash values and compare it to the stored hash

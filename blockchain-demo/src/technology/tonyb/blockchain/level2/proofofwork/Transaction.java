@@ -1,7 +1,5 @@
 package technology.tonyb.blockchain.level2.proofofwork;
 
-import java.util.Arrays;
-
 /**
  * Object {@link technology.tonyb.blockchain.level1.principles.Transaction Transaction} contains only information about transaction.
  * Transaction contains one <b>source address</b> from which is send some <b>amount</b> of money to <b>target address</b>. 
@@ -21,7 +19,7 @@ public class Transaction {
 	private Double amount;
 
 	/** Hash of the transaction. */
-	private int transactionHash;
+	private String transactionHash;
 	
 	/** 
 	 * Transaction is initialized via constructor, which takes on input following parameters: <br> 
@@ -40,8 +38,8 @@ public class Transaction {
 
 	/** Method will count transaction hash. */
 	private void countTransactionHash() {
-		Object[] content = {this.source, this.target, this.amount};
-		this.transactionHash = Arrays.hashCode(content);
+		String[] content = {this.source, this.target, this.amount + ""};
+		this.transactionHash = Hash.getHash(content);
 	}
 
 	/** 
@@ -76,7 +74,7 @@ public class Transaction {
 	 * 
 	 * @return transaction hash
 	 */
-	public int getTransactionHash() {
+	public String getTransactionHash() {
 		return this.transactionHash;
 	}
 }

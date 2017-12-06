@@ -1,7 +1,6 @@
 package technology.tonyb.blockchain.level2.proofofwork;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /** 
@@ -12,17 +11,20 @@ import java.util.List;
  */
 public class Block {
 
+	/** Number of zeros at the beginning of the hash. */
+	public static final int DIFFICULTY = 3;
+	
 	/** Hash of previous block. */
-	private int previousBlockHash = 0;
+	private String previousBlockHash = "0";
 	
 	/** List of transactions listed in current block. */
 	private List<Transaction> transactions = new ArrayList<Transaction>();
 	
 	/** Hash of current block calculated when information about transactions and hash of previous block are provided. */
-	private int currentBlockHash;
+	private String currentBlockHash;
 	
 	/** Block is initialized by hash of previous block and all transactions, which should be present in block. */
-	public Block(int previousBlockHash, List<Transaction> transactions) {
+	public Block(String previousBlockHash, List<Transaction> transactions) {
 		this.previousBlockHash = previousBlockHash;
 		this.transactions = transactions;
 		
@@ -30,7 +32,7 @@ public class Block {
 	}
 	
 	/** Method returns hash of previous block. */
-	public int getPreviousBlockHash() {
+	public String getPreviousBlockHash() {
 		return this.previousBlockHash;
 	}
 
@@ -44,20 +46,26 @@ public class Block {
 	 * 
 	 * @return hash of current block
 	 */
-	public int getCurrentBlockHash() {
+	public String getCurrentBlockHash() {
 		return this.currentBlockHash;
 	}
 	
 	/** Method counts hash of current block. */
 	private void countCurrentBlockHash() {
-		int[] transactionHashes = new int[this.transactions.size() + 1];
+		String[] materialForBlockHash = new String[this.transactions.size() + 1];
 		
-		transactionHashes[0] = this.previousBlockHash;
+		materialForBlockHash[0] = this.previousBlockHash;
 
 		for (int i = 1; i <= this.transactions.size(); i++) {
-			transactionHashes[i] = this.transactions.get(i - 1).getTransactionHash();
+			materialForBlockHash[i] = this.transactions.get(i - 1).getTransactionHash();
 		}
 		
-		this.currentBlockHash = Arrays.hashCode(transactionHashes);
+		this.currentBlockHash = Hash.getHash(materialForBlockHash);
+	}
+	
+	private void mineBlock(int difficulty) {
+		
+		
+		
 	}
 }

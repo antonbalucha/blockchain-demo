@@ -13,7 +13,7 @@ public class Blockchain {
 		List<Transaction> genesisTransactions1 = new ArrayList<Transaction>();
 		genesisTransactions1.add(genesisTransaction);		
 		
-		Block genesisBlock = new Block(0, genesisTransactions1);
+		Block genesisBlock = new Block("0", genesisTransactions1);
 		System.out.println("Hash of genesis block: " + genesisBlock.getCurrentBlockHash());
 
 		
